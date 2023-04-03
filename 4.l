@@ -2,10 +2,10 @@
 #include<stdio.h>
 %}
 %%
-auto|double|int|signed|unsigned|else|long|switch|break|if|for|void|return|continue|while printf("keywords %s",yytext);
+auto|double|int|signed|unsigned|else|long|switch|break|if|for|void|return|continue|while printf("\nkeyword\n");
 [{};,()] printf("\nseperator\n");
 [+-/=*%] printf("\noperator\n");
-([a-zA-Z][0-9])+|[a-zA-Z]|[0-9] printf("\nidentifier\n");
+[a-zA-Z_][a-zA-Z0-9_]* printf("\nidentifier\n");
 .|\n; printf("  ");
 %%
 int yywrap(){
@@ -13,5 +13,5 @@ return 1;
 }
 int main(){
 yylex();
-return 0;
+return 0;
 }
