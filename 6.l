@@ -1,17 +1,16 @@
+
 %{
 #include<stdio.h>
 %}
 %%
-[\t" "]+ fprintf(yyout," ");
-.|\n fprintf(yyout,"%s",yytext);
+[\t" "]+ {fprintf(yyout," ");}
 %%
+int main(){
+yyin=fopen("input6.txt","r");
+yyout=fopen("output6.txt","w");
+yylex();
+return 0;
+}
 int yywrap(){
 return 1;
-}
-int main(){
-yyin=fopen("N.txt","r");
-yyout=fopen("output.txt","w");
-yylex();
-
-return 0;
 }
